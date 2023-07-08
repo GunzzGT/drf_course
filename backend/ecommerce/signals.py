@@ -5,5 +5,7 @@ from rest_framework.authtoken.models import Token
 
 @receiver(post_save, sender=User, weak=False)
 def report_uploaded(sender, instance, created, **kwargs):
+    print("token failed")
     if created:
         Token.objects.create(user=instance)
+        print("token created")
